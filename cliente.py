@@ -1,12 +1,6 @@
 import socket
 from comandos import lista_comandos
-
-HEADER = 64
-PORT = 5050
-FORMAT = 'utf-8'
-
-SERVER = socket.gethostbyname(socket.gethostname())
-ADDR = (SERVER, PORT)
+from constantes import *
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
@@ -23,8 +17,7 @@ def send(msg):
     if client.recv(2048).decode(FORMAT) == "CLOSE":
         print("finalizado")
         return False
-    else:
-        return True
+    return True
 
 
 while conectado:
